@@ -1,8 +1,49 @@
+import Gallery from "../components/Gallery"
+import { useState } from "react"
+
 export default function Museum() {
+  const [selectedCategory, setSelectedCategory] = useState("all")
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category)
+  }
+
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold">Art Museum 🎨</h2>
-      <p className="text-gray-600 mt-2">Upload and share artworks.</p>
+    <div className="p-4 max-w-5xl mx-auto">
+      <h2 className="text-3xl font-bold">Art Museum 🎨</h2>
+      <p className="text-gray-600 mt-2 mb-6">
+        A place where artists showcase their creativity! Browse artworks from
+        different categories.
+      </p>
+
+      <div className="flex space-x-4 mb-6">
+        <button
+          className={`px-4 py-2 rounded-lg ${selectedCategory === "all" ? "bg-telegram text-white" : "bg-gray-200"}`}
+          onClick={() => handleCategoryChange("all")}
+        >
+          All Artworks
+        </button>
+        <button
+          className={`px-4 py-2 rounded-lg ${selectedCategory === "digital" ? "bg-telegram text-white" : "bg-gray-200"}`}
+          onClick={() => handleCategoryChange("digital")}
+        >
+          Digital Art
+        </button>
+        <button
+          className={`px-4 py-2 rounded-lg ${selectedCategory === "traditional" ? "bg-telegram text-white" : "bg-gray-200"}`}
+          onClick={() => handleCategoryChange("traditional")}
+        >
+          Traditional Art
+        </button>
+        <button
+          className={`px-4 py-2 rounded-lg ${selectedCategory === "3d" ? "bg-telegram text-white" : "bg-gray-200"}`}
+          onClick={() => handleCategoryChange("3d")}
+        >
+          3D Art
+        </button>
+      </div>
+
+      <Gallery category={selectedCategory} />
     </div>
   )
-    }
+}
