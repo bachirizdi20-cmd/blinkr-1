@@ -1,0 +1,8 @@
+export default function Museum() {
+  return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold">Art Museum 🎨</h2>
+      <p className="text-gray-600 mt-2">Upload and share artworks.</p>
+    </div>
+  )
+    }
